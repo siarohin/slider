@@ -8,7 +8,7 @@ let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus 
       // init function when LoremIpsum~ page will be load (script --> /body)
       setTimeout(() => {
         notifications();
-      }, 5000);
+      }, 0);
     }
 })();
 
@@ -29,6 +29,8 @@ function notifications() {
         <label for="ntf-trigger">Disable Tips</label>
       </form>
       <div class="points">
+        <a class="prev"></a>
+        <a class="next"></a>
       </div>
     </footer>`;
 

@@ -1,0 +1,57 @@
+@import url("normalized.css");
+
+/* Fonts */
+
+@font-face {
+	font-family: 'Bold';
+	src: url('fonts/Lato-Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Regular';
+	src: url('fonts/Lato-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font: 16px 'Regular', 'Myriad Pro', sans-serif;
+	color: #3c444b;
+}
+
+#wrapper {
+  padding: 1em 2.5em;
+  margin: 0 auto;
+}
+
+header, footer {
+  height: 6.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  font: 1em 'Bold', 'Myriad Pro', sans-serif;
+  border-top: 2px solid #3c444b;
+}
+
+h1 {
+  font: 1.5em 'Bold', 'Myriad Pro', sans-serif;
+}
+
+p {
+  font: 1em 'Regular', 'Myriad Pro', sans-serif;
+  line-height: 1.5em;
+  text-indent: 1.5em;
+  margin: 0 0 1.5em;
+}

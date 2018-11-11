@@ -1,0 +1,266 @@
+@import url("font-awesome-4.7.0/css/font-awesome.min.css");
+
+@keyframes appearance{
+  0%{
+    transform: translateY(-150%);
+  }
+  50%{
+    transform: translateY(8%);
+  }
+  65%{
+      transform: translateY(-4%);
+  }
+  80%{
+      transform: translateY(4%);
+  }
+  95%{
+      transform: translateY(-2%);
+  }
+  100%{
+      transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes appearance {
+  0%{
+      -webkit-transform: translateY(-150%);
+  }
+  50%{
+      -webkit-transform: translateY(8%);
+  }
+  65%{
+      -webkit-transform: translateY(-4%);
+  }
+  80%{
+      -webkit-transform: translateY(4%);
+  }
+  95%{
+      -webkit-transform: translateY(-2%);
+  }
+  100%{
+      -webkit-transform: translateY(0%);
+  }
+}
+
+#notifications {
+  width: 450px;
+  height: 250px;
+  background: #fff;
+  border: 2px solid #3c444b;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 999;
+  right: 16px;
+  top: 16px;
+  box-shadow: 0px 11px 18px -1px rgba(0,0,0,0.5);
+  background: linear-gradient(#fff, #e4e4e4);
+  animation: appearance 1s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-150%) rotate(75deg);
+  transition: .3s;
+}
+
+#notifications .close {
+  width: 30px;
+  height: 30px;
+  color: #3c444b;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  text-align: center;
+}
+
+#notifications .close:hover {
+  opacity: 0.7;
+}
+
+#notifications .close::after {
+  content: '\00d7';
+  font: 1.5em 'FontAwesome', 'Myriad Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#notifications p {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+}
+
+#notifications h3 {
+  text-transform: uppercase;
+  font: 18px bold;
+  margin: 8px;
+}
+
+#notifications a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#notifications article {
+  width: 80%;
+  height: 130px;
+  overflow: hidden;
+  padding: 4px 8px;
+  margin: 0;
+}
+
+#notifications article p {
+  display: flex;
+  height: 148px;
+  width: 100%;
+}
+
+#notifications .moveUp {
+  transform: translateY(-150%);
+  opacity: 0;
+  transition: .3s;
+}
+
+#notifications .moveDown {
+  transform: translateY(150%);
+  opacity: 0;
+  transition: .3s;
+}
+
+#notifications footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+  position: absolute;
+  background: #ececec;
+  border-top: 1px solid #fff;
+}
+
+#notifications footer > div {
+  width: 50%;
+}
+
+#notifications footer > form {
+  width: 45%;
+}
+
+/* points & buttons */
+#notifications .prev,
+#notifications .next {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #cdd1da;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.3);
+  margin: 0 4px;
+  position: relative;
+}
+
+#notifications .prev:hover,
+#notifications .next:hover {
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.6);
+  background: rgba(0,0,0,.3);
+}
+
+#notifications .prev::before {
+  content: '\f104';
+  right: 10px;
+}
+
+#notifications .next::before {
+  content: '\f105';
+  left: 10px;
+}
+
+#notifications .prev::before,
+#notifications .next::before {
+  font: 1.2em 'FontAwesome', 'Myriad Pro', sans-serif;
+  color: #bebebe;
+  opacity: .8;
+  position: absolute;
+  top: 2px;
+}
+
+#notifications .prev:hover::before,
+#notifications .next:hover::before {
+  opacity: .3;
+  color: #000;
+  font-size: 1em;
+  top: 3px;
+}
+
+#notifications .points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#notifications .point {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #cdd1da;
+  border-radius: 50%;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+#notifications .point:hover,
+#notifications .point.active {
+  background: #3c444b;
+}
+
+/* trigger on/off */
+
+#notifications #ntf-trigger {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 20px;
+}
+
+#notifications #ntf-trigger + label {
+  position: relative;
+  padding: 0 0 0 60px;
+  cursor: pointer;
+}
+
+#notifications #ntf-trigger + label:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #cdd1da;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+  transition: .2s;
+}
+
+#notifications #ntf-trigger + label:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  transition: .2s;
+}
+
+#notifications #ntf-trigger:checked + label:before {
+  background: rgba(0,0,0,.6);
+}
+
+#notifications #ntf-trigger:checked + label:after {
+  left: 26px;
+}

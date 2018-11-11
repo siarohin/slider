@@ -8,7 +8,7 @@ let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus 
       // init function when LoremIpsum~ page will be load (script --> /body)
       setTimeout(() => {
         notifications();
-      }, 0);
+      }, 5000);
     }
 })();
 

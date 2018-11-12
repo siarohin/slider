@@ -72,6 +72,9 @@ function listenerExperemental() {
 function closeWindow() {
   let link = document.querySelector('.close');
   link.addEventListener('click', () => {
+    // clear window adress in browser to start position;
+    window.location.hash = '';
+    // close window
     let element = document.getElementById('notifications');
     element.classList.add('hidden');
   });

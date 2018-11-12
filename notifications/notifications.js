@@ -45,6 +45,7 @@ function notifications() {
   storageBox(tips);
   controlPoint();
   listenerExperemental();
+  keyListener();
 }
 
 function listenerExperemental() {
@@ -56,21 +57,13 @@ function listenerExperemental() {
   let strToNum = str.replace(/[^0-9]/g,'');
 
   toDown.addEventListener('click', () => {
-    if (strToNum > 1) {
-      strToNum = +strToNum - 1;
-    } else {
-      strToNum = 6;
-    }
+    strToNum > 1 ? strToNum = +strToNum - 1 : strToNum = tips.length;
     window.location.hash = strToNum;
     windowLister();
   });
 
   toUp.addEventListener('click', () => {
-    if (strToNum < 6) {
-      strToNum = +strToNum + 1;
-    } else {
-      strToNum = 1;
-    }
+    strToNum < tips.length ? strToNum = +strToNum + 1 : strToNum = 1;
     window.location.hash = strToNum;
     windowLister();
   });
@@ -151,4 +144,42 @@ function windowLister() {
       point[i].classList.add('active');
     }
   }
+}
+
+// keyboard Listener
+function keyListener() {
+  str = window.location.hash;
+  let strToNum = str.replace(/[^0-9]/g,'');
+
+  let toDown = document.querySelector('.prev');
+  let toUp = document.querySelector('.next');
+
+  window.onkeyup = function(e) {
+    let key = e.keyCode ? e.keyCode : e.which;
+ 
+    if (key === 39) {
+      strToNum < tips.length ? strToNum = +strToNum + 1 : strToNum = 1;
+      window.location.hash = strToNum;
+      toUp.classList.add('imitationClick');
+      
+      setTimeout(() => {
+        toUp.classList.remove('imitationClick');
+      }, 150);
+
+      resetPoint();
+      windowLister();
+    }
+    if (key === 37) {
+      strToNum > 1 ? strToNum = +strToNum - 1 : strToNum = tips.length;
+      window.location.hash = strToNum;
+      toDown.classList.add('imitationClick');
+
+      setTimeout(() => {
+        toDown.classList.remove('imitationClick');
+      }, 150);
+
+      resetPoint();
+      windowLister();
+    }
+ }
 }

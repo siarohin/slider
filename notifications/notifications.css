@@ -116,15 +116,12 @@
 }
 
 #notifications .moveUp {
-  transform: translateY(-150%);
-  opacity: 0;
-  transition: .3s;
+  transform: translateY(-1500px);
+  animation-iteration-count: infinite;
 }
 
 #notifications .moveDown {
-  transform: translateY(150%);
-  opacity: 0;
-  transition: .3s;
+  transform: translateY(138px);
 }
 
 #notifications footer {

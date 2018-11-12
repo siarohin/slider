@@ -1,5 +1,5 @@
 // get tips from Smth
-let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem', 'ique sit et natus!', 'cing elit. Fugit!', ' Quo in enim dolorem distinctio?', 'lique? Nam tempore ut excepturi eum qui.', 'em aliquam corrupti.'];
+let tips = ['1. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab sapiente facere.', '2. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab sapiente facere. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab sapiente facere.', '3. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias ab sapiente facere!! Molestias ab sapiente facere.', '4. Molestias ab sapiente facere. Molestias ab sapiente facere.', '5. Molestias ab sapiente facere. Molestias ab sapiente facere. Molestias ab sapiente facere.', '6. Molestias ab sapiente facere.'];
 
 // check localStorage
 (function checkStorage() {
@@ -14,6 +14,10 @@ let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem', 'i
 
 // if localStorage OK --> init function
 function notifications() {
+  // clear window adress in browser to start position;
+  window.location.hash = '#1';
+
+  // create a notificator
   let template = document.createElement('div');
 
   template.id = 'notifications';
@@ -43,18 +47,34 @@ function notifications() {
   listenerExperemental();
 }
 
-// function listenerExperemental() {
-//   let toDown = document.querySelector('.prev');
-//   let toUp = document.querySelector('.next');
+function listenerExperemental() {
+  let toDown = document.querySelector('.prev');
+  let toUp = document.querySelector('.next');
 
-//   let target = document.querySelectorAll('article > p');
+  let target = document.querySelectorAll('article > p');
+  str = window.location.hash;
+  let strToNum = str.replace(/[^0-9]/g,'');
 
-//   toDown.addEventListener('click', () => {
-//     for (let i = 0; i < target.length; i ++) {
-//       target[i].style.transform = 'translateY(100px)';
-//     }
-//   });
-// }
+  toDown.addEventListener('click', () => {
+    if (strToNum > 1) {
+      strToNum = +strToNum - 1;
+    } else {
+      strToNum = 6;
+    }
+    window.location.hash = strToNum;
+    windowLister();
+  });
+
+  toUp.addEventListener('click', () => {
+    if (strToNum < 6) {
+      strToNum = +strToNum + 1;
+    } else {
+      strToNum = 1;
+    }
+    window.location.hash = strToNum;
+    windowLister();
+  });
+}
 
 // is close button push? OK --> close window
 function closeWindow() {
@@ -118,4 +138,17 @@ function controlPoint() {
         point[i].classList.add('active');
       });
     }
+}
+
+// window Listener function (set active to point)
+function windowLister() {
+  let point = document.querySelectorAll('.point');
+
+  str = window.location.hash;
+
+  for (let i = 0; i < point.length; i++) {
+     if (point[i].hash === window.location.hash) {
+      point[i].classList.add('active');
+    }
+  }
 }

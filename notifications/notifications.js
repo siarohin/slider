@@ -1,5 +1,5 @@
 // get tips from Smth
-let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus delectus vel laborum unde quasi, non perspiciatis. Lorem ipsum dolor sit amet consectetur adipisicing. Lorem ipsum dolor sit, amet consectetur adipisicing.', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius quas similique sit et natus!', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo in enim dolorem distinctio?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit inventore earum culpa! Dolorum voluptates ut adipisci iste similique? Nam tempore ut excepturi eum qui.', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe optio ab, doloribus facere debitis iure libero harum, assumenda dolorem aliquam corrupti.'];
+let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem', 'ique sit et natus!', 'cing elit. Fugit!', ' Quo in enim dolorem distinctio?', 'lique? Nam tempore ut excepturi eum qui.', 'em aliquam corrupti.'];
 
 // check localStorage
 (function checkStorage() {
@@ -8,7 +8,7 @@ let tips = ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus 
       // init function when LoremIpsum~ page will be load (script --> /body)
       setTimeout(() => {
         notifications();
-      }, 0);
+      }, 5000);
     }
 })();
 
@@ -40,7 +40,21 @@ function notifications() {
   disableSwitch();
   storageBox(tips);
   controlPoint();
+  listenerExperemental();
 }
+
+// function listenerExperemental() {
+//   let toDown = document.querySelector('.prev');
+//   let toUp = document.querySelector('.next');
+
+//   let target = document.querySelectorAll('article > p');
+
+//   toDown.addEventListener('click', () => {
+//     for (let i = 0; i < target.length; i ++) {
+//       target[i].style.transform = 'translateY(100px)';
+//     }
+//   });
+// }
 
 // is close button push? OK --> close window
 function closeWindow() {

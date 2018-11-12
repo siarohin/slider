@@ -43,28 +43,27 @@ function notifications() {
   closeWindow();
   disableSwitch();
   storageBox(tips);
-  controlPoint();
   listenerExperemental();
+  controlPoint();
   keyListener();
+  windowLister();
 }
+
 
 function listenerExperemental() {
   let toDown = document.querySelector('.prev');
   let toUp = document.querySelector('.next');
-
   let target = document.querySelectorAll('article > p');
-  str = window.location.hash;
-  let strToNum = str.replace(/[^0-9]/g,'');
-
   toDown.addEventListener('click', () => {
+    let strToNum = (window.location.hash).replace(/[^0-9]/g,'');
     strToNum > 1 ? strToNum = +strToNum - 1 : strToNum = tips.length;
-    window.location.hash = strToNum;
+    window.location.hash = '#' + strToNum;
     windowLister();
   });
-
   toUp.addEventListener('click', () => {
+    let strToNum = (window.location.hash).replace(/[^0-9]/g,'');
     strToNum < tips.length ? strToNum = +strToNum + 1 : strToNum = 1;
-    window.location.hash = strToNum;
+    window.location.hash = '#' + strToNum;
     windowLister();
   });
 }
@@ -102,16 +101,11 @@ let storageBox = (arr) => {
     document.querySelector('article').appendChild(p);
     p.id = '' + (i+1);
     p.innerHTML = arr[i];
-
     let a = document.createElement('a');
     document.querySelector('.points').insertBefore(a, document.querySelector('.next'));
     a.href = '#' + (i+1);
     a.classList.add('point');
   }
-
-  // select firstPoint as active
-  let firstPoint = document.querySelectorAll('.point')[0];
-  firstPoint.classList.add('active');
 };
 
 // point Reset
@@ -124,7 +118,7 @@ function resetPoint() {
 
 // point Control
 function controlPoint() {
-  let point = document.querySelectorAll('a');
+  let point = document.querySelectorAll('.point');
     for (let i = 0; i < point.length; i++) {
       point[i].addEventListener('click', () => {
         resetPoint();
@@ -136,11 +130,9 @@ function controlPoint() {
 // window Listener function (set active to point)
 function windowLister() {
   let point = document.querySelectorAll('.point');
-
-  str = window.location.hash;
-
   for (let i = 0; i < point.length; i++) {
-     if (point[i].hash === window.location.hash) {
+    if (point[i].hash === window.location.hash) {
+      resetPoint();
       point[i].classList.add('active');
     }
   }
@@ -148,38 +140,27 @@ function windowLister() {
 
 // keyboard Listener
 function keyListener() {
-  str = window.location.hash;
-  let strToNum = str.replace(/[^0-9]/g,'');
-
   let toDown = document.querySelector('.prev');
   let toUp = document.querySelector('.next');
-
   window.onkeyup = function(e) {
     let key = e.keyCode ? e.keyCode : e.which;
- 
+    let strToNum = (window.location.hash).replace(/[^0-9]/g,'');
+
     if (key === 39) {
       strToNum < tips.length ? strToNum = +strToNum + 1 : strToNum = 1;
-      window.location.hash = strToNum;
       toUp.classList.add('imitationClick');
-      
       setTimeout(() => {
         toUp.classList.remove('imitationClick');
       }, 150);
-
-      resetPoint();
-      windowLister();
     }
     if (key === 37) {
       strToNum > 1 ? strToNum = +strToNum - 1 : strToNum = tips.length;
-      window.location.hash = strToNum;
       toDown.classList.add('imitationClick');
-
       setTimeout(() => {
         toDown.classList.remove('imitationClick');
       }, 150);
-
-      resetPoint();
-      windowLister();
     }
- }
+    window.location.hash = '#' + strToNum;
+    windowLister();
+  }
 }

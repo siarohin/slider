@@ -1,3 +1,4 @@
-# slider-
+# slider
 
-Live demo: https://siarohin.github.io
+Demo: https://siarohin.github.io
+Support: Left and Right keyboard buttoms

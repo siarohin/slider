@@ -1,6 +1,6 @@
 # slider
 
-Demo: https://siarohin.github.io/slider-/
+Demo: https://siarohin.github.io/slider/
 
 Timeout: 5s
 
